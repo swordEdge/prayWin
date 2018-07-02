@@ -1,0 +1,222 @@
+@import '../../../../variables';
+
+.overview-wrapper {
+	width: 100%;
+	height: 253px;
+	border-top: solid 15px $medium-blue;
+	.icon-wrapper {
+		width: 180px;
+		border: 1px solid transparent;
+		box-sizing: content-box;
+		background-color: $almost-white;
+		padding-right: 2px;
+
+		.icon {
+			width: 86px;
+			height: 86px;
+			margin: 30px 48px 0px 46px;
+		}
+
+		.position-info {
+			margin-top: 9px;
+			padding-right: 2px;
+			.name {
+				color: $very-dark-gray;
+				line-height: 1;
+				display: block;
+			}
+
+			.position {
+				margin-top: 1px;
+				font-size: 12px;
+				color: $very-dark-gray;
+				line-height: 1;
+				display: block;
+			}
+	  }
+
+		.profile-info {
+			font-family: "proxima_novasemibold", Arial, sans-serif;
+			margin-top: 5px;
+			padding-right: 2px;
+			.motives {
+				.title {
+					font-size: 12px;
+					color: $medium-gray;
+				}
+				.content {
+					margin-left: 4px;
+					position: relative;
+					top: -1px;
+					span {
+						&:nth-child(1) {
+							color: #e62550;
+						}
+						&:nth-child(2) {
+							color: $very-dark-gray;
+						}
+						&:nth-child(3) {
+							color: $light-blue;
+						}
+					}
+				}
+			}
+
+			.conflict {
+				position: relative;
+				top: -2px;
+				.title {
+					font-size: 12px;
+					color: $medium-gray;
+				}
+
+				.content {
+					margin-left: 4px;
+					position: relative;
+					top: -1px;
+					span {
+						&:nth-child(1) {
+							color: #e62550;
+						}
+						&:nth-child(2) {
+							color: $very-dark-gray;
+						}
+						&:nth-child(3) {
+							color: $light-blue;
+						}
+						&:nth-child(4) {
+							color: $very-dark-gray;
+						}
+						&:nth-child(5) {
+							color: #00ab6b;
+						}
+					}
+				}
+			}
+		}
+
+		.sdi-date-info {
+			margin-top: 18px;
+			padding-right: 2px;
+			& > span {
+				display: inline-block;
+				font-size: 10px;
+				color: $medium-gray;
+				height: 13px;
+				border-bottom: solid 1px $medium-gray;
+				.content {
+					margin-left: -4px;
+					padding-left: 4px;
+				}
+			}
+		}
+  }
+	.state-wrapper {
+		flex: 1;
+		padding-top: 18px;
+		span {
+			display: block;
+		}
+
+		.header-info {
+			color: $very-dark-gray;
+		}
+
+		.current-info {
+			margin-top: 22px;
+			.title {
+				margin-top: 2px;
+			}
+		}
+
+		.maximum-info {
+			margin-top: 36px;
+			.title {
+				margin-top: 4px;
+			}
+		}
+		
+		.content {
+			font-family: 'proxima_novamedium';
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 1;
+		}
+
+		.title {
+			font-family: 'proxima_novamedium';
+			font-size: 11px;
+			color: $medium-gray;
+		}
+
+		.members {
+			margin-left: -8px;
+			.content {
+				color: #00aa6d;
+			}
+		}
+
+		.guests {
+			padding-right: 3px;
+			.content {
+				color: #e62550;
+			}
+		}
+
+		.sdi20 {
+			margin-right: 30px;
+			span {
+				display: block;
+			}
+
+			.open-invitations-info {
+				margin-top: 23px;
+				.title {
+					margin-top: 2px;
+				}
+			}
+
+			.completed-info {
+				margin-top: 37px;
+				.title {
+					margin-top: 2px;
+					padding-left: 2px;
+				}
+      }
+      
+			.content {
+				color: $light-blue;
+			}
+		}
+	}
+
+	.credits-wrapper {
+		width: 184px;
+		border-left: solid 2px $border-gray;
+		padding-top: 18px;
+		padding-left: 2px;
+		span {
+			display: block;
+		}
+		
+		.header-info {
+			color: $very-dark-gray;
+		}
+
+		.my-credits-info {
+			font-family: 'proxima_novamedium';
+			margin-top: 22px;
+			.content {
+				font-size: 36px;
+				line-height: 1;
+				color: #4a90e2;
+			}
+
+			.title {
+				font-size: 11px;
+				margin-top: 2px;
+				color: $medium-gray;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+@import '../../../../variables';
+
+.transactions {
+  height: 60px;
+  background: $body-text-color;
+  strong {
+    display: block;
+    letter-spacing: 1.6px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $white;
+    border-bottom: solid 1px $medium-blue;
+    padding-bottom: 3px;
+    margin-top: -3px;
+  }
+}

@@ -1,0 +1,51 @@
+<div class="tab-container">
+  <div class="tab-info d-flex">
+    <div class="invite d-flex align-items-center flex-1" (click)="onClick('invite')" [ngClass]="{'tab-active': tabActive==='invite'}" >
+      <strong l10nTranslate>inventory_invite_text</strong>
+    </div>
+    <div class="remind d-flex align-items-center flex-1" (click)="onClick('remind')" [ngClass]="{'tab-active': tabActive==='remind'}" >
+      <strong l10nTranslate>inventory_remind_text</strong>
+    </div>
+  </div>
+  <div *ngIf="tabActive==='invite'" class="sub-tab-info">
+    <strong class="needing-invite" (click)="onSubClick('needing')" [ngClass]="{'subActive': subTabActive==='needing'}"  l10nTranslate>inventory_members_needing_invites</strong>
+    <strong class="new-member" (click)="onSubClick('new')" [ngClass]="{'subActive': subTabActive==='new'}" l10nTranslate>inventory_invite_new_members</strong>
+  </div>
+  <ng-container *ngIf="tabActive==='invite' && subTabActive==='new'">
+    <app-invitation></app-invitation>
+    <app-invitation-grid></app-invitation-grid>
+  </ng-container>
+  
+  <ng-container *ngIf="tabActive==='invite' && subTabActive==='needing'">
+    <div class="needing-filter-header">
+      <strong class="sdi-invites" l10nTranslate>inventory_members_needing_sdi_invites</strong>
+      <span class="not-invited" l10nTranslate>inventory_members_not_invited</span>
+    </div>
+    <div class="filters d-flex align-items-center">
+      <div class="action">
+        <img [src]="filterIconUrl" (click)="toggleSidebar()" />
+        <a class="action-text" l10nTranslate>common_text_filter</a>
+      </div>
+    
+      <div class="search-input d-flex justify-content-center flex-1">
+        <div class="search-container">
+          <input class="search-input form-control" [placeholder]="reminderText" [(ngModel)]="tableData.filter.names" />
+          <img class="icon" src="assets/icons/search-gray.svg" />
+        </div>
+      </div>
+    
+      <div class="reminder-button">
+        <button class="btn" l10nTranslate>inventory_draft_invitation</button>
+      </div>
+    </div>
+    
+    <div class="member-container d-flex">
+      <div class="filter-sidebar" [class.opened]="sidebarOpened">
+        <app-member-table-filter [filter]="tableData.filter"></app-member-table-filter>
+      </div>
+      <div class="member-table flex-1" [class.opened]="sidebarOpened">
+        <app-member-table [data]="tableData"></app-member-table>
+      </div>
+    </div>
+  </ng-container>
+</div>

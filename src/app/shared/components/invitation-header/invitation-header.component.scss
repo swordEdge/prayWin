@@ -1,0 +1,30 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+$header-height: 99px;
+
+.page-header {
+  height: $header-height;
+  padding-top: 4px;
+  .nav-back {
+    color: $very-dark-gray;
+    padding: 30px;
+    letter-spacing: 0.5px;
+    strong {
+      margin-left: 1px;
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .nav-title {
+    font-size: 24px;
+    color: $body-text-color;
+    padding-left: 10px;
+    padding-bottom: 1px;
+  }
+
+  .nav-home {
+    padding: 30px 41px;
+  }
+}

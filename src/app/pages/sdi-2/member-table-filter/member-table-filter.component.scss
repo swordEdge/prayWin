@@ -1,0 +1,179 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+@mixin label-checkbox-style($checked-bg-color, $border-color, $size) {
+  visibility: hidden;
+  position: absolute;
+  height: $size;
+  width: $size;
+
+  &:checked + span {
+    background-color: $checked-bg-color;
+    border-color: $border-color;
+  }
+
+  &:checked + span:after {
+    opacity: 1;
+  }
+
+  + span {
+    background-color: $white;
+    border: 1px solid $border-color;
+    border-radius: 25%;
+    cursor: pointer;
+    height: $size;
+    width: $size;
+    margin-bottom: 0;
+    display: inline-block;
+    position: relative;
+    margin-right: 6px;
+
+    &:after {
+      border: $size / 10 solid $white;
+      border-top: none;
+      border-right: none;
+      content: "";
+      height: $size / 4;
+      left: $size / 5;
+      opacity: 0;
+      position: absolute;
+      top: $size / 4;
+      transform: rotate(-45deg);
+      width: $size / 2;
+    }
+
+    + * {
+      flex: 1;
+      line-height: 1.4;
+    }
+  }
+}
+
+@mixin app-label-checkbox($checked-bg-color, $border-color, $size: 19px) {
+  position: relative;
+  margin: 0;
+  display: flex;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    @include label-checkbox-style($checked-bg-color, $border-color, $size);
+  }
+
+  input[type='radio'] {
+    @include label-checkbox-style($checked-bg-color, $border-color, $size);
+
+    + span {
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+}
+
+.sidebar-body {
+  width: 175px;
+  padding: 0 26px 0 23px;
+
+  > div {
+    padding: 13px 0;
+    border-bottom: 1px solid $extra-light-gray;
+    
+
+    &.members-filter {
+      margin-left: 7px;
+      margin-top: -1px;
+      padding-bottom: 2px;
+      label {
+        margin-bottom: 9px;
+      }
+    }
+
+    .filter-label {
+      font-size: 12px;
+      font-family: "proxima_novabold", Arial, sans-serif;
+    }
+
+    .radio-button-text {
+      font-size: 10px;
+    }
+
+    &.reset-button {
+      .btn-reset {
+        @include app-button(100%, 25px, 11px, 3px, white);
+        padding-top: 5px;
+        margin-top: -2px;
+        margin-bottom: 3px;
+        letter-spacing: 0.4px;
+        color: inherit;
+        border-color: $body-text-color;
+      }
+    }
+
+    &.labels-filter {
+      margin: -3px -8px -8px 6px;
+      label {
+        margin-bottom: 5px;
+      }
+      .btn-labels-dropdown {
+        @include app-button(100%, 22px, 10px, 4px, $body-text-color);
+        font-family: "proxima_novasemibold", Arial, sans-serif;
+        padding: 0;
+        line-height: 1;
+
+        &.custom-btn {
+          border-bottom-right-radius: initial;
+          border-bottom-left-radius: initial;
+        }
+
+        span {
+          padding: 4px 5px 4px;
+          &.custom-dropdown-active {
+            background-color: #242424;
+            border: 1px solid #242424;
+          }
+        }
+
+        a {
+          padding: 4px 5px;
+          border-left: 1px solid #111;
+
+          img {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+
+      .labels-list {
+        border: 1px solid $extra-light-gray;
+        position: absolute;
+        width: 128px;
+        max-height: 109px;
+        overflow-y: scroll;
+        background: white;
+
+        label {
+          padding: 7px 8px 6px 8px;
+          font-size: 10px;
+
+          &:hover {
+            color: $alert-info-background-color;
+            background-color: $extra-light-gray;
+            cursor: pointer;
+          }
+
+          &.custom-checkbox {
+            @include app-label-checkbox($very-dark-gray, $dark-gray, 12px);
+          }
+        }
+      }
+    }
+  }
+
+  .custom-radio-button {
+    @include app-label-checkbox($very-dark-gray, $dark-gray, 12px);
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+}

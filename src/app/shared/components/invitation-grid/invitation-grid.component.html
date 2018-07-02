@@ -1,0 +1,79 @@
+<div class="invite-grid-container">
+  <div class="grid-header d-flex align-items-center">
+    <div class="names flex-1" (click)="NameSort()">
+      <strong l10nTranslate>common_text_names</strong>
+      <img src="assets/icons/dropdown-active.svg" [ngClass]="{'sort': sortArray['profile']}" />
+    </div>
+    <div class="motives d-flex align-items-center" (click)="MotivesSort()">
+      <strong l10nTranslate>navigation_motives</strong>
+      <img src="assets/icons/dropdown-active.svg" [ngClass]="{'sort': sortArray['motives']}" />
+    </div>
+    <div class="invite-status">
+      <strong l10nTranslate>inventory_invite_status</strong>
+    </div>
+  </div>
+  <div class="grid-body">
+    <div class="grid-row d-flex align-items-center" *ngFor="let row of rows | appEventSort: filter">
+      <div class="profile-info d-flex align-items-center justify-content-start flex-1">
+        <div class="avatar d-flex align-items-center justify-content-center">
+          <img *ngIf="row.profile.avatar" [src]="row.profile.avatar" />
+          <span *ngIf="!row.profile.avatar">{{row.profile.firstName[0]}}{{row.profile.lastName[0]}}</span>
+        </div>
+        <div class="main-info d-flex flex-column justify-content-center">
+          <span class="names">
+            {{ row.profile.firstName }} {{ row.profile.lastName }}
+          </span>
+          <span class="job-title">{{row.profile.job}}</span>
+          <span class="meta">{{row.profile.meta}}</span>
+        </div>
+      </div>
+      <div class="motives hub" *ngIf="row.motives==='HUB'">
+        <span>H</span>
+        <span>U</span>
+        <span>B</span>
+      </div>
+      <div class="motives red" *ngIf="row.motives==='RED'">
+        <span>RED</span>
+      </div>
+      <div class="motives green" *ngIf="row.motives==='GREEN'">
+        <span>GREEN</span>
+      </div>
+      <div class="motives" *ngIf="!row.motives"></div>
+      <div class="invite-status d-flex flex-column align-items-start justify-content-center">
+        <div class="invited-date" *ngIf="row.status_invited">
+          <span l10nTranslate>train_text_invited</span>: {{ row.status_invited | date: 'd MMM. y' }}
+        </div>
+        <div class="invite-reminder" *ngFor="let reminder of row.status_reminders">
+          <span l10nTranslate>inventory_text_invite_reminder</span>: {{ reminder | date: 'd MMM. y' }}
+        </div>
+        <div *ngIf="row.status_added">
+          <span l10nTranslate>inventory_text_added</span>: {{ row.status_added | date: 'd MMM. y' }}
+        </div>
+        <div class="invite-completed" *ngIf="row.status_completed">
+          <span l10nTranslate>inventory_text_completed</span>: {{ row.status_completed | date: 'd MMM. y' }}
+        </div>
+         <a class="text-uppercase" *ngIf="!row.status_completed" l10nTranslate>inventory_text_remind</a>
+      </div>
+      <div class="actions position-relative" #popover>
+        <div class="btn-popup"
+          [ngbPopover]="popContent"
+          [placement]="'bottom'"
+          #p="ngbPopover"
+          (click)="onClickPop($event, p)"
+          (document:click)="p.close()"
+        >
+          <img src="assets/icons/settings-gray.svg" />
+        </div>
+        <ng-template #popContent>
+          <div class="actions-dropdown d-flex flex-column">
+            <a l10nTranslate>inventory_view_profile</a>
+            <a l10nTranslate>inventory_copy_link</a>
+            <a l10nTranslate>nventory_copy_email_link</a>
+            <a l10nTranslate>inventory_copy_link_mark_sent</a>
+            <a l10nTranslate>inventory_copy_email_link_mark_sent</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

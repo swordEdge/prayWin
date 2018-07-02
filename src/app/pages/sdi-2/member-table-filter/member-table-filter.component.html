@@ -1,0 +1,34 @@
+<div class="sidebar-body">
+  <div class="reset-button">
+    <button class="btn btn-reset text-uppercase" (click)="resetFilter()" l10nTranslate>inventory_reset_filters</button>
+  </div>
+  <div class="members-filter">
+    <label class="filter-label" l10nTranslate>navigation_members</label>
+    <label class="custom-radio-button">
+      <input type="radio" name="memberFilter" [(ngModel)]="filter.members" [value]="0" />
+      <span></span>
+      <a class="radio-button-text" l10nTranslate>inventory_added_by_me</a>
+    </label>
+    <label class="custom-radio-button">
+      <input type="radio" name="memberFilter" [(ngModel)]="filter.members" [value]="1" />
+      <span></span>
+      <a class="radio-button-text" l10nTranslate>inventory_members_needing_invitations</a>
+    </label>
+  </div>
+  <div class="labels-filter">
+    <label class="filter-label" l10nTranslate>common_text_labels</label>
+    <div class="position-relative">
+      <button class="btn btn-labels-dropdown d-flex just-content-between align-items-center" [ngClass]="{'custom-btn': dropdownLabelsOpened}" (click)="toggleDropdownLabels($event)">
+        <span class="flex-1 text-left" [ngClass]="{'custom-dropdown-active': dropdownLabelsOpened}" l10nTranslate>common_text_select_labels</span>
+        <a><img src="assets/icons/dropdown-active-white.svg" /></a>
+      </button>
+      <div class="labels-list" *ngIf="dropdownLabelsOpened">
+        <label class="custom-checkbox" *ngFor="let filter of filters; index as idx; trackBy: commonService.trackStringItem">
+          <input type="checkbox"/>
+          <span></span>
+          <span>{{ filter.value }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

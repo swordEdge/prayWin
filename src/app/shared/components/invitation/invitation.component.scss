@@ -1,0 +1,120 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.page-container {
+  background-color: $medium-blue;
+  font-family: "proxima_novamedium", Arial, sans-serif;
+
+  .form-header {
+    width: 100%;
+    height: 50px;
+    padding: 18px 0px;
+
+    strong {
+      display: inline-block;
+      font-size: 18px;
+      color: $white;    
+      margin-left: 29px;
+      line-height: 14px;
+    }
+
+    .up-arrow-white {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      margin-left: 2px;
+      margin-top: -8px;
+      line-height: 14px;
+      transition: transform .3s;
+      &.active {
+        transform: rotate(180deg);
+        transition: transform .3s;
+      }
+    }
+  }
+
+  .form-invitation {
+    width: 100%;
+    padding-bottom: 44px;
+    border: solid 4px $medium-blue;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom, $light-blue, $medium-blue);
+    max-height: 9000px;
+    transition: max-height .3s;
+    &.active {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .3s;
+      padding-bottom: 0;
+    }
+
+    .form-control-wrapper {
+      display: flex;
+      &:last-child {
+        border: 0;
+      }
+      padding: 25px 0 44px;
+      margin: 0 58px 0 56px;
+      border-bottom: 2px solid #5cb2d6;
+      
+      .form-control-column {
+        &:first-child {
+            margin-right: 42px;
+        }
+        width: calc(50% - 23px);
+        display: inline-block;
+
+        .form-group {
+          margin-bottom: 4px;
+          label {
+            font-family: "proxima_novabold", Arial, sans-serif;
+            width: 100%;
+            line-height: 2;
+            color: $extra-light-gray;
+
+            .form-control {
+                font-family: "proxima_novamedium", Arial, sans-serif;
+                background: transparent;
+                border: 1px solid #5cb2d6;
+                border-radius: 6px;
+                width: 100%;
+                height: 35px;
+                padding-left: 13px;
+                padding-top: 9px;
+
+
+                &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                  color: #9bc7e3;
+                }
+                &::-moz-placeholder { /* Firefox 19+ */
+                  color: #9bc7e3;
+                }
+                &:-ms-input-placeholder { /* IE 10+ */
+                  color: #9bc7e3;
+                }
+                &:-moz-placeholder { /* Firefox 18- */
+                  color: #9bc7e3;
+                }
+            }
+          }
+        }
+      }
+    }
+
+    .btn-group {
+      margin: 14px 120px;
+      .add-another {
+          @include app-button(250px, 42px, $base-font-size, 3px, $very-light-gray);
+          color: $medium-blue;
+          border: solid 1px $medium-blue;
+          margin-right: 20px;
+      } 
+
+      .draft-invitation {
+          @include app-button(250px, 42px, $base-font-size, 4px, $psp-hub);
+          border: solid 1px $medium-blue;
+          letter-spacing: 1px;
+      }
+    }
+  }
+}

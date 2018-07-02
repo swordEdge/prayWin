@@ -1,0 +1,91 @@
+<div class="member-table">
+  <div class="table-header d-flex">
+    <div class="check">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="selectAll" [(ngModel)]="allChecked" />
+        <span></span>
+      </label>
+      <span l10nTranslate>teams_select_all</span>
+    </div>
+    <div class="names flex-1" [class.dec-sort]="nameSort" (click)="toggleNameSort()">
+      <span l10nTranslate>common_text_names</span>
+      <img src="assets/icons/dropdown-active.svg" />
+    </div>
+    <div class="invite-status" [class.date-sort]="dateSort" (click)="toggleDateSort()">
+        <span l10nTranslate>inventory_date_added</span>
+        <img src="assets/icons/dropdown-active.svg" />
+    </div>
+    <div class="actions"></div>
+  </div>
+  <div class="table-body">
+    <div class="table-row d-flex" *ngFor="let row of rows; index as idx; trackBy: commonService.trackStringItem">
+      <div class="check">
+        <label class="custom-checkbox">
+          <input type="checkbox" [(ngModel)]="checked[idx]" />
+          <span></span>
+        </label>
+        <div class="avatar d-flex align-items-center justify-content-center">
+          <img *ngIf="row.avatar" [src]="row.avatar" />
+          <span *ngIf="!row.avatar">{{ row.name.firstName[0] }}{{ row.name.lastName[0] }}</span>
+        </div>
+      </div>
+      <div class="profile d-flex flex-column justify-content-center align-items-start flex-1">
+        <span class="names">{{ row.name.firstName }} {{ row.name.lastName }}</span>
+        <span class="job">{{ row.job }}</span>
+      </div>
+      <div class="invite-status flex-column align-items-start justify-content-center">
+        <div class="invited-date">
+          <span l10nTranslate>inventory_text_added</span>: {{ row.status.added | date: 'MMM. d y' }}
+        </div>
+      </div>
+      <div class="actions position-relative">
+        <div class="btn-popup"
+          [ngbPopover]="popContent"
+          [placement]="'bottom'"
+          #p="ngbPopover"
+          (document:click)="p.close()"
+          (click)="$event.stopPropagation()"
+        >
+          <img src="assets/icons/settings-gray.svg" />
+        </div>
+        <ng-template #popContent>
+          <div class="actions-dropdown d-flex flex-column">
+            <a l10nTranslate>inventory_view_profile</a>
+            <a l10nTranslate>inventory_copy_link</a>
+            <a l10nTranslate>nventory_copy_email_link</a>
+            <a l10nTranslate>inventory_copy_link_mark_sent</a>
+            <a l10nTranslate>inventory_copy_email_link_mark_sent</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+    <li>F</li>
+    <li>G</li>
+    <li>H</li>
+    <li>I</li>
+    <li>J</li>
+    <li>K</li>
+    <li>L</li>
+    <li>M</li>
+    <li>N</li>
+    <li>O</li>
+    <li>P</li>
+    <li>Q</li>
+    <li>R</li>
+    <li>S</li>
+    <li>T</li>
+    <li>U</li>
+    <li>V</li>
+    <li>W</li>
+    <li>X</li>
+    <li>Y</li>
+    <li>Z</li>
+  </ul>
+</div>
